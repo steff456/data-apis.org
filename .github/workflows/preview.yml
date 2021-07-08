@@ -9,7 +9,7 @@ jobs:
         uses: larsoner/circleci-artifacts-redirector-action@master
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          artifact-path: 0/build/latest/index.html
+          artifact-path: 0/public/index.html
           circleci-jobs: build_page
           job-title: Check the rendered site!
       - name: Data API webpage preview
