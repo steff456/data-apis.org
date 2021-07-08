@@ -19,6 +19,7 @@ jobs:
           name: build docs
           no_output_timeout: 25m
           command: |
+            sudo apt update
             sudo apt-get install hugo
             hugo -D -d build/latest
       - store_artifacts:
