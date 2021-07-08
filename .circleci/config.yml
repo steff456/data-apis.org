@@ -1,0 +1,31 @@
+version: 2
+
+# Aliases to reuse
+_defaults: &defaults
+  docker:
+    # CircleCI maintains a library of pre-built images
+    # documented at https://circleci.com/docs/2.0/circleci-images/
+    - image: circleci/python:3.7.0
+  working_directory: ~/repo
+
+jobs:
+  build_page:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: build docs
+          no_output_timeout: 25m
+          command: |
+            sudo apt-get install hugo
+            hugo -D -d build/latest
+      - store_artifacts:
+          path: build/latest
+
+workflows:
+  version: 2
+  default:
+    jobs:
+      - build_page
