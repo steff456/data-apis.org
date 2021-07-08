@@ -5,7 +5,7 @@ _defaults: &defaults
   docker:
     # CircleCI maintains a library of pre-built images
     # documented at https://circleci.com/docs/2.0/circleci-images/
-    - image: felicianotech/docker-hugo:0.80
+    - image: cibuilds/hugo:0.80
   working_directory: ~/repo
 
 jobs:
@@ -21,7 +21,7 @@ jobs:
           command: |
             # wget https://github.com/gohugoio/hugo/releases/download/v0.80.0/hugo_extended_0.80.0_Linux-64bit.deb
             # sudo dpkg -i hugo_extended_0.80.0_Linux-64bit.deb
-            hugo
+            HUGO_ENV="production" hugo --themesDir themes/ --layoutDir layouts/
       - store_artifacts:
           path: public
 
