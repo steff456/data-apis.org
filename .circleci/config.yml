@@ -5,7 +5,7 @@ _defaults: &defaults
   docker:
     # CircleCI maintains a library of pre-built images
     # documented at https://circleci.com/docs/2.0/circleci-images/
-    - image: circleci/python:3.7.0
+    - image: cimg/base:2021.04
   working_directory: ~/repo
 
 jobs:
@@ -19,8 +19,8 @@ jobs:
           name: build docs
           no_output_timeout: 25m
           command: |
-            wget https://github.com/gohugoio/hugo/releases/download/v0.80.0/hugo_0.80.0_Linux-64bit.deb
-            sudo dpkg -i hugo_0.80.0_Linux-64bit.deb
+            wget https://github.com/gohugoio/hugo/releases/download/v0.80.0/hugo_extended_0.80.0_Linux-64bit.deb
+            sudo dpkg -i hugo_extended_0.80.0_Linux-64bit.deb
             hugo
       - store_artifacts:
           path: public
