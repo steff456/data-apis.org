@@ -21,9 +21,9 @@ jobs:
           command: |
             wget https://github.com/gohugoio/hugo/releases/download/v0.80.0/hugo_extended_0.80.0_Linux-64bit.deb
             sudo dpkg -i hugo_extended_0.80.0_Linux-64bit.deb
-            hugo -b -d build/latest
+            hugo
       - store_artifacts:
-          path: build/latest
+          path: public
 
 workflows:
   version: 2
